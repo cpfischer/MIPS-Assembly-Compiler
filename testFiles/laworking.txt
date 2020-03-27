@@ -1,0 +1,21 @@
+void la(std::string & x, std::string & input, std::vector<Reg> & r,
+        const std::vector<Reg> & labels, const unsigned int & labelCount,
+        bool isPass)
+{
+    int reg0 = 1;
+    if (!isPass)
+    {
+        reg0 = getReg(x, input, r);
+    }
+
+    str_tok(x, input);
+    for (int i = 0; i < labelCount; ++i)
+    {
+        if (x.compare(labels[i].name()) == 0)
+        {
+            r[reg0].val() = labels[i].val();
+            break;
+        }
+    }
+    //ERROR if more code or if label not found
+}
